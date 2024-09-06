@@ -15,12 +15,12 @@ router.get("/", getWorkouts);
 router.get("/:id", getWorkout);
 
 // create a post
-router.post("/", updateWorkout);
+router.post("/create", createWorkout);
 
 // update a post
-router.patch("/:id", createWorkout);
+router.patch("/:id", updateWorkout);
 
 // delete a post
-router.get("/:id", deleteWorkout);
+router.delete("/:id", deleteWorkout);
 
 module.exports = router;
