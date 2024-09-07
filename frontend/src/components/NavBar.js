@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 const NavBar = () => {
   return (
     <nav>
-      <a>Workouts Project</a>
-      <a href="*">Create Post</a>
+      <Link to="/">Workouts Project</Link>
+
+      <Link to="/createworkout"> Create Post</Link>
     </nav>
   );
 };
