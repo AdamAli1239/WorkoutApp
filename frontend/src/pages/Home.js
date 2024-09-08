@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useWorkoutHook } from "../hooks/useWorkoutContext";
+import WorkoutDetails from "../components/WorkoutDetails";
 
 const Home = () => {
   const { workouts, dispatch } = useWorkoutHook();
@@ -15,7 +16,10 @@ const Home = () => {
   }, []);
   return (
     <div>
-        {workouts && workouts.map}
+      {workouts &&
+        workouts.map((workout) => (
+          <WorkoutDetails key={workout._id} workout={workout} />
+        ))}
     </div>
   );
 };
