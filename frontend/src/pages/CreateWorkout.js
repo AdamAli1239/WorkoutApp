@@ -1,12 +1,33 @@
 import { useState } from "react";
-
-const createWorkout = () => {
+import { useWorkoutHook } from "../hooks/useWorkoutContext";
+import { Navigate, useNavigate } from "react-router-dom";
+const CreateWorkout = () => {
+  const { dispatch } = useWorkoutHook();
   const [title, setTitle] = useState("");
   const [reps, setReps] = useState("");
   const [weight, setWeight] = useState("");
+  console.log("IN THIS COMPONENT");
+  const navigate = useNavigate();
 
-  const handleSubmission = (e) => {
+  const handleSubmission = async (e) => {
     e.preventDefault();
+    const response = await fetch("/api/workouts/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, reps, weight }),
+    });
+
+    const json = await response.json();
+    if (response.ok) {
+      console.log("we here");
+      dispatch({ type: "CREATE_WORKOUT", payload: json });
+      setTitle("");
+      setReps("");
+      setWeight("");
+      navigate(-1);
+    }
   };
   return (
     <form onSubmit={handleSubmission}>
@@ -42,4 +63,4 @@ const createWorkout = () => {
   );
 };
 
-export default createWorkout;
+export default CreateWorkout;
