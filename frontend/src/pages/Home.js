@@ -15,11 +15,13 @@ const Home = () => {
     getWorkouts();
   }, []);
   return (
-    <div>
-      {workouts &&
-        workouts.map((workout) => (
-          <WorkoutDetails key={workout._id} workout={workout} />
-        ))}
+    <div className="h-full h-100vh bg-stone-500 pb-96">
+      <div className="flex gap-8 flex-wrap mb-auto justify-center p-8">
+        {workouts &&
+          workouts.map((workout) => (
+            <WorkoutDetails key={workout._id} workout={workout} />
+          ))}
+      </div>
     </div>
   );
 };

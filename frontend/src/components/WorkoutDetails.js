@@ -15,14 +15,20 @@ const WorkoutDetails = ({ workout }) => {
     }
   };
   return (
-    <div>
-      <h3>{workout.title}</h3>
-      <p>{workout.reps}</p>
-      <p>{workout.weight}</p>
-
-      <span onClick={handleClick} className="hover:red">
+    <div className="bg-stone-200 p-8 border-2  w-96 ">
+      <div className="mb-5">
+        <h3 className="font-bold  underline-offset-1 text-blue-500 font-serif">
+          {workout.title}
+        </h3>
+        <p className="font-serif">Load(kg): {workout.reps}</p>
+        <p className="font-serif">Reps: {workout.weight}</p>
+      </div>
+      <button
+        onClick={handleClick}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full font-serif"
+      >
         Click to delete the workout
-      </span>
+      </button>
     </div>
   );
 };
